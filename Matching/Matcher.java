@@ -17,7 +17,7 @@ public interface Matcher {
     }
 
     /** returns true if student and host are compatible, false otherwise */
-    boolean isCompatible();
+    boolean areCompatible(Host h, Student s);
 
     /** returns the total number of hosts */
     int totalHosts();
@@ -25,7 +25,7 @@ public interface Matcher {
     /** returns the total number of students*/
     int totalStudents();
 
-    /** returns the sum of initial capacity of the hosts */
+    /** returns the sum of initial capacity of all the hosts */
     int totalCapacity();
 
 }

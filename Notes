@@ -1,0 +1,13 @@
+7/16/2018:
+Iterative matching algorithm is dependent on host's capacity to host a
+participant at any given instance. Thus, the total capacity of Host is irrelevant during matching.
+- capacity is DYNAMIC i.e. returns the Host's current capacity not total capacity.
+    - find max capacity of group of host by summing their capacities when instantiated
+
+7/31/2018:
+Matching package added. Will contain Matcher interface. All matching algorithms will extend matcher interface.
+Static Match(host, student) method commented out of RaicesParticipant and implemented in matcher.
+
+8/14/2018:
+Methoder class added to Participant package. Static method pair(h, s) used to maintain abstraction barrier
+in Matchers match() class i.e. maintain protected method status for match in Participant subclasses.

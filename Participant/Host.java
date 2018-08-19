@@ -112,6 +112,8 @@ public class Host implements RaicesParticipant {
         return this.priority - other.priority();
     }
 
+
+
     // Used for testing purposes
     public static void main(String[] args) {
         String[] accommodations = {"true", "true", "true"};
