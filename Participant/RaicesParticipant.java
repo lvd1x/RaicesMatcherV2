@@ -14,6 +14,6 @@ public interface RaicesParticipant extends Participant {
     boolean isMatched();
 
     /** returns the array of accommodations */
-    String[] getAccommodations();
+    boolean[] getAccommodations();
 
 }

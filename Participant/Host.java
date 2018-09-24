@@ -6,30 +6,40 @@ public class Host implements RaicesParticipant {
     private String email;
     private String phone;
     private String homeTown;
-    private String[] accommodations;
     private Student[] hosting;
+    private boolean[] accommodations;
     private int priority;
     private int capacity;
 
     public Host(String name, String[] accommodations, String homeTown, String phone, String email, String capacity) {
         this.name = name;
-        this.accommodations = accommodations;
+        //this.accommodations = setAccommodate(accommodations);
         this.homeTown = homeTown;
         this.phone = phone;
         this.email = email;
-        this.priority = calculatePriority(accommodations);
+        this.accommodations = new boolean[accommodations.length];
+        this.priority = setPref(accommodations);
         this.capacity = Integer.parseInt(capacity);
         this.hosting = new Student[this.capacity];
     }
 
-    /** Calculates priority of host given a string list of required accommodations */
-    private int calculatePriority(String[] accommodationList) {
+    // Sets the priority of the host and initializes its
+    private int setPref(String[] accommodationList) {
         int hostPriority = 0;
 
-        for (int i = 0; i < accommodationList.length; i++) {
-            if (accommodationList[i].equals("true")) {
-                hostPriority += (i + 1);
+        try {
+
+            for (int i = 0; i < accommodationList.length; i++) {
+                if (accommodationList[i].equals("true")) {
+                    hostPriority += (i + 1);
+                    this.accommodations[i] = true;
+                } else {
+                    this.accommodations[i] = false;
+                }
             }
+
+        } catch (NullPointerException e) {
+            System.out.println(this.name + " does not have sufficient accommodation information.");
         }
 
         return hostPriority;
@@ -88,7 +98,7 @@ public class Host implements RaicesParticipant {
     }
 
     // Returns string array with required accommodations
-    public String[] getAccommodations() {
+    public boolean[] getAccommodations() {
         return accommodations;
     }
 

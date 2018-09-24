@@ -7,32 +7,42 @@ public class Student implements RaicesParticipant {
     private String email;
     private String phone;
     private String homeTown;
-    private String[] accommodations;
+    private boolean[] accommodations;
     private int priority;
     private boolean isMatched;
     private Host host;
 
     public Student(String name, String[] accommodations, String homeTown, String phone, String email) {
         this.name = name;
-        this.accommodations = accommodations;
+        //this.accommodations = accommodations;
         this.homeTown = homeTown;
         this.phone = phone;
         this.email = email;
+        this.accommodations = new boolean[accommodations.length];
         this.priority = calculatePriority(accommodations);
         this.isMatched = false;
     }
 
     /** Calculates priority of host given a string list of required accommodations */
     private int calculatePriority(String[] accommodationList) {
-        int hostPriority = 0;
+        int studentPriority = 0;
 
-        for (int i = 0; i < accommodationList.length; i++) {
-            if (accommodationList[i].equals("true")) {
-                hostPriority += (i + 1);
+        try {
+
+            for (int i = 0; i < accommodationList.length; i++) {
+                if (accommodationList[i].equals("true")) {
+                    studentPriority += (i + 1);
+                    this.accommodations[i] = true;
+                } else {
+                    this.accommodations[i] = false;
+                }
             }
+
+        } catch (NullPointerException e) {
+            System.out.println(this.name + " does not have sufficient accommodation information.");
         }
 
-        return hostPriority;
+        return studentPriority;
     }
 
     protected void match(Host h) {
@@ -65,7 +75,7 @@ public class Student implements RaicesParticipant {
     public boolean isMatched() { return isMatched; }
 
     // Returns string array with required accommodations
-    public String[] getAccommodations() { return accommodations; }
+    public boolean[] getAccommodations() { return accommodations; }
 
 
     // Returns Name of student's host
