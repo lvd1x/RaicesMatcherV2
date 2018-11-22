@@ -13,7 +13,6 @@ public class Host implements RaicesParticipant {
 
     public Host(String name, String[] accommodations, String homeTown, String phone, String email, String capacity) {
         this.name = name;
-        //this.accommodations = setAccommodate(accommodations);
         this.homeTown = homeTown;
         this.phone = phone;
         this.email = email;

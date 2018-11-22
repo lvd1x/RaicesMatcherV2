@@ -14,17 +14,16 @@ public class Student implements RaicesParticipant {
 
     public Student(String name, String[] accommodations, String homeTown, String phone, String email) {
         this.name = name;
-        //this.accommodations = accommodations;
         this.homeTown = homeTown;
         this.phone = phone;
         this.email = email;
         this.accommodations = new boolean[accommodations.length];
-        this.priority = calculatePriority(accommodations);
+        this.priority = setPref(accommodations);
         this.isMatched = false;
     }
 
     /** Calculates priority of host given a string list of required accommodations */
-    private int calculatePriority(String[] accommodationList) {
+    private int setPref(String[] accommodationList) {
         int studentPriority = 0;
 
         try {
