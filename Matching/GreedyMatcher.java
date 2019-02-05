@@ -86,17 +86,37 @@ public class GreedyMatcher implements Matcher {
     }
 
 
-    private void matchStudent(Student s) {
-        Stack<Host> notMatches = new Stack<>();
-        Host potentialHost = HOSTS.delMax();
+    // add host to top of stack in order to check whether or not it is full
+    /**
+     * Attempts to find a compatible host for student. If host is found and is not at capacity, it will be
+     * @param s: Student that needs to be matched
+     * @param Hosts: a PQ of potential host
+     * @return Returns a stack of Host that were not compatible with the student
+     */
+    private Stack<Host> matchStudent(Student s, MaxPQ<Host> Hosts) {
+        Stack<Host> notFullyMatched = new Stack<>();
+        Host potentialHost = Hosts.delMax();
 
-        while ((potentialHost.priority() != 0) && !HOSTS.isEmpty()) {
+        while ((potentialHost.priority() <= potentialHost.priority())) {
             if (areCompatible(potentialHost, s)) {
                 Matcher.match(potentialHost, s);
+                //if host is not fully matched, should be put back into priority queue
+                //consider case where fully matched and must be removed
+                if (!potentialHost.isMatched()) {
+                    notFullyMatched.push(potentialHost);
+                } else if (potentialHost.isMatched()){
+
+                }
             } else {
-                notMatches.push(potentialHost);
-                potentialHost = HOSTS.delMax();
+                notFullyMatched.push(potentialHost);
+                // if hosts is empty, break loop
+                if (Hosts.isEmpty()){
+                    break;
+                }
+                potentialHost = Hosts.delMax();
             }
         }
+        return notFullyMatched;
     }
+
 }
