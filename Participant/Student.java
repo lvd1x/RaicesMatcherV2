@@ -58,6 +58,10 @@ public class Student implements RaicesParticipant {
     // Returns the student's name
     public String name() { return name; }
 
+    public String firstName() { return name.split("\\s+")[0]; }
+
+    public String lastName() { return name.split("\\s+")[1]; }
+
     // Returns the student's email
     public String email() { return email; }
 
@@ -83,6 +87,14 @@ public class Student implements RaicesParticipant {
             return (name + " does not have a host.");
         } else {
             return host.name();
+        }
+    }
+
+    public void hostInfo() {
+        if (!isMatched) {
+            System.out.println(name + " does not have a host");
+        } else {
+            System.out.println(name + " is being hosted by " + host.name());
         }
     }
 

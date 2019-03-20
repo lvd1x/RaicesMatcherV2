@@ -4,6 +4,8 @@ import Participant.Host;
 import Participant.Student;
 import Participant.Methoder;
 
+import java.util.LinkedList;
+
 public interface Matcher {
 
     /**
@@ -27,5 +29,17 @@ public interface Matcher {
 
     /** returns the sum of initial capacity of all the hosts */
     int totalCapacity();
+
+    /** adds student who needs a host to matcher */
+    void addStudent(Student s);
+
+    /** adds host to list of available hosts in matcher */
+    void addHost(Host h);
+
+    /** returns the group of pairings in matcher */
+    LinkedList<Host> getPairings();
+
+    /** returns the list of students who need host */
+    LinkedList<Student> getStudents();
 
 }

@@ -51,7 +51,7 @@ public class Host implements RaicesParticipant {
     }
 
     // Returns true if host has at least one match and false otherwise
-    protected boolean isHosting() {
+    public boolean isHosting() {
         return hosting[0] != null;
     }
 
@@ -65,6 +65,10 @@ public class Host implements RaicesParticipant {
     public String name() {
         return name;
     }
+
+    public String firstName() { return name.split("\\s+")[1]; }
+
+    public String lastName() { return name.split("\\s+")[0]; }
 
     // Returns the host's email
     public String email() {
@@ -99,6 +103,10 @@ public class Host implements RaicesParticipant {
     // Returns string array with required accommodations
     public boolean[] getAccommodations() {
         return accommodations;
+    }
+
+    public Student[] getHosting() {
+        return hosting;
     }
 
     // Prints the students that are currently being hosted
