@@ -11,8 +11,8 @@ public class InputOutput {
         Matcher males = new GreedyMatcher();
         Matcher females = new GreedyMatcher();
 
-        FileRead.setStudents(males, females, "/Users/levid/Desktop/RaicesMatcherV2/FileInOut/Mentees2018Copy.csv");
-        FileRead.setHosts(males, females, "/Users/levid/Desktop/RaicesMatcherV2/FileInOut/Host2018Copy.csv");
+        FileRead.setStudents(males, females, "/Users/levid/Desktop/RaicesMatcherV2/FileInOut/studentsFinal.csv");
+        FileRead.setHosts(males, females, "/Users/levid/Desktop/RaicesMatcherV2/FileInOut/hostData.csv");
 
         ((GreedyMatcher) males).runMatcher();
         ((GreedyMatcher) females).runMatcher();

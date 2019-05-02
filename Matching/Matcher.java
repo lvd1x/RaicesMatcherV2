@@ -33,8 +33,12 @@ public interface Matcher {
     /** adds student who needs a host to matcher */
     void addStudent(Student s);
 
+    void addStudents(LinkedList<Student> s);
+
     /** adds host to list of available hosts in matcher */
     void addHost(Host h);
+
+    void addHosts(LinkedList<Host> h);
 
     /** returns the group of pairings in matcher */
     LinkedList<Host> getPairings();

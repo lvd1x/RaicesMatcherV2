@@ -31,6 +31,12 @@ public class FileRead {
             hometown = hometown.substring(4, hometown.length());
 
             gender = input.next();
+            if (gender.matches("(?i).*she.*") || gender.matches("(?i).*female.*")) {
+                gender = "F";
+            } else {
+                gender = "M";
+            }
+
             email = input.next();
             comments = input.next();
 
@@ -73,7 +79,7 @@ public class FileRead {
         String[] accommodations = {"false", "false", "false"};
 
         while (input.hasNextLine()) {
-            name = input.next();
+            name = input.next() + " " + input.next();
             hometown = input.next();
             phone = input.next();
             email = input.next();
@@ -88,17 +94,19 @@ public class FileRead {
             capacity = input.next();
 
             // gets the accommodations for the hosts
-            if (input.next().equals("TRUE")) {
-                accommodations[2] = "true";
-            }
-            if (input.next().equals("TRUE")) {
-                accommodations[0] = "true";
-            }
-
-            comments = input.next();
-            if (comments.matches("(?i).*undoc.*")){
+            if (input.next().equals("Yes")) {
                 accommodations[1] = "true";
             }
+            if (input.next().equals("Yes")) {
+                accommodations[0] = "true";
+            }
+            if (input.next().equals("Yes")) {
+                accommodations[2] = "true";
+            }
+//            comments = input.next();
+//            if (comments.matches("(?i).*undoc.*")){
+//                accommodations[1] = "true";
+//            }
 
             // places host in correct matcher
             if (gender.equals("M")) {
@@ -106,6 +114,7 @@ public class FileRead {
             } else {
                 females.addHost(new Host(name, accommodations, hometown, phone, email, capacity));
             }
+//            System.out.println(name);
 
             input.nextLine();
         }

@@ -18,4 +18,12 @@ public class PairedParticipants {
     public void addStudent(Student student) {
         RemainingStudents.add(student);
     }
+
+    public LinkedList<Host> getHosts() {
+        return Hosts;
+    }
+
+    public LinkedList<Student> getRemainingStudents() {
+        return getRemainingStudents();
+    }
 }

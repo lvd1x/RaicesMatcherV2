@@ -22,6 +22,18 @@ public class GreedyMatcher implements Matcher {
         totalStudents = 0;
     }
 
+    public GreedyMatcher(LinkedList<Host> HOSTS, LinkedList<Student> STUDENTS, LinkedList<Host> Pairings) {
+        this.HOSTS = HOSTS;
+        this.STUDENTS = STUDENTS;
+        this.PAIRINGS = Pairings;
+        totalStudents = STUDENTS.size();
+        totalCapacity = 0;
+
+        for (Host h: HOSTS) {
+            totalCapacity += h.capacity();
+        }
+    }
+
     // Needs to take in generic class in LinkedList
 //    private void addParticipantTo(LinkedList<Object> l, RaicesParticipant p) {
 //
@@ -57,6 +69,13 @@ public class GreedyMatcher implements Matcher {
         totalStudents += 1;
     }
 
+    // use for adding list of students from location
+    public void addStudents(LinkedList<Student> studentList) {
+        for (Student s: studentList) {
+            addStudent(s);
+        }
+    }
+
     /**
      * Adds host to max priority queue
      * @param h: the host being inserted
@@ -75,6 +94,13 @@ public class GreedyMatcher implements Matcher {
         }
 
         totalCapacity += h.capacity();
+    }
+
+    // use for adding list of host from location
+    public void addHosts(LinkedList<Host> hostList) {
+        for (Host h: hostList) {
+            addHost(h);
+        }
     }
 
     // returns the number of hosts that are not at capacity
@@ -131,7 +157,6 @@ public class GreedyMatcher implements Matcher {
     }
 
 
-    // add host to top of stack in order to check whether or not it is full
     /**
      * Attempts to find a compatible host for student. If host is found and is not at capacity, it will be matched.
      * If Host reaches capacity after being matched, it will be removed from HOSTS and placed in PAIRINGS

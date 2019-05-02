@@ -16,15 +16,15 @@ public class FileWrite {
     private static void writePairings(FileWriter writer, LinkedList<Host> matches) {
         try {
             for (Host h: matches) {
-                System.out.println("currently writing host: " + h.name());
+//                System.out.println("currently writing host: " + h.name());
                 for (Student s: h.getHosting()) {
                     writer.append(s.firstName());
                     writer.append(COMMA);
                     writer.append(s.lastName());
                     writer.append(COMMA);
-                    writer.append(h.firstName());
-                    writer.append(COMMA);
                     writer.append(h.lastName());
+                    writer.append(COMMA);
+                    writer.append(h.firstName());
                     writer.append(COMMA);
                     writer.append(h.email());
                     writer.append(COMMA);
@@ -48,6 +48,16 @@ public class FileWrite {
                 writer.append(s.firstName());
                 writer.append(COMMA);
                 writer.append(s.lastName());
+                writer.append(COMMA);
+                writer.append(' ');
+                writer.append(COMMA);
+                writer.append(' ');
+                writer.append(COMMA);
+                writer.append(' ');
+                writer.append(COMMA);
+                writer.append(s.phone());
+                writer.append(COMMA);
+                writer.append(s.email());
                 writer.append(NEWLINE);
             }
         } catch (Exception e) {
